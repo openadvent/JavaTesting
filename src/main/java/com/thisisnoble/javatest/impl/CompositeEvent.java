@@ -10,10 +10,15 @@ public class CompositeEvent implements Event {
     private final String id;
     private final Event parent;
     private final Map<String, Event> children = new HashMap<>();
+    private String parentObjectID;
+    private boolean parentFlag;
+    int numOfChildren;
 
-    public CompositeEvent(String id, Event parent) {
+    public CompositeEvent(String id, Event parent,String parentObjectID) {
         this.id = id;
         this.parent = parent;
+        this.parentObjectID = parentObjectID;
+        this.parentFlag = true;
     }
 
     public String getId() {
@@ -37,4 +42,27 @@ public class CompositeEvent implements Event {
     public int size() {
         return children.size();
     }
+    
+    public String getParentObjectID() {
+    	
+    	return parentObjectID;
+    }
+    
+    public boolean isParentEvent() {
+    	
+    	return parentFlag;
+    }
+    
+    public void setParentObjectID(String objectID) {
+    	this.parentObjectID = objectID;
+    }
+    
+    public void setNumOfChildren(int number) {
+    	this.numOfChildren = number;
+    }
+    
+    public int getNumOfChildren() {
+    	return numOfChildren;
+    }
+    
 }

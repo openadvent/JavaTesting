@@ -23,9 +23,9 @@ public class MarginProcessor extends AbstractProcessor {
     protected Event processInternal(Event event) {
         String parId = event.getId();
         if (event instanceof TradeEvent)
-            return new MarginEvent(marginEventId(parId), parId, calculateTradeMargin(event));
+            return new MarginEvent(marginEventId(parId), parId, calculateTradeMargin(event),event.getParentObjectID());
         else if (event instanceof ShippingEvent)
-            return new MarginEvent(marginEventId(parId), parId, calculateShippingMargin(event));
+            return new MarginEvent(marginEventId(parId), parId, calculateShippingMargin(event),event.getParentObjectID());
         throw new IllegalArgumentException("unknown event for margin calculation " + event);
     }
 

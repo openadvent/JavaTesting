@@ -23,9 +23,9 @@ public class RiskProcessor extends AbstractProcessor {
     protected Event processInternal(Event event) {
         String parId = event.getId();
         if (event instanceof TradeEvent)
-            return new RiskEvent(riskEventId(parId), parId, calculateTradeRisk(event));
+            return new RiskEvent(riskEventId(parId), parId, calculateTradeRisk(event),event.getParentObjectID());
         else if (event instanceof ShippingEvent)
-            return new RiskEvent(riskEventId(parId), parId, calculateShippingRisk(event));
+            return new RiskEvent(riskEventId(parId), parId, calculateShippingRisk(event),event.getParentObjectID());
         throw new IllegalArgumentException("unknown event for risk " + event);
     }
 

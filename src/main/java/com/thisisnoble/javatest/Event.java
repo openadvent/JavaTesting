@@ -4,4 +4,10 @@ package com.thisisnoble.javatest;
 public interface Event {
 
     String getId();
+    boolean isParentEvent();
+    void setParentObjectID(String uniqueID);
+    String getParentObjectID();
+    int getNumOfChildren();
+    void setNumOfChildren(int number);
+    
 }
